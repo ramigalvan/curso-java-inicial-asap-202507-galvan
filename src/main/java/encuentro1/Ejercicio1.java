@@ -1,5 +1,6 @@
 package encuentro1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -12,9 +13,19 @@ public class Ejercicio1 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        int numero = 0;
+        boolean entradaValida = false;
 
-        System.out.println("Ingrese un numero");
-        int numero = scanner.nextInt();
+        while(!entradaValida){
+            System.out.println("Ingrese un numero");
+            try{
+                numero = scanner.nextInt();
+                entradaValida = true;
+            }catch(InputMismatchException ex){
+                System.out.println("Entrada invalida. Por favor, ingrese un numero.");
+                 scanner.nextLine();
+            }
+        }
 
         //evaluar si el numero es multiplo
         boolean esMultiploTres = (numero % 3 == 0);
